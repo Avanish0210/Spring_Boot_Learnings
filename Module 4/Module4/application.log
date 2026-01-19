@@ -1,0 +1,80 @@
+2026-01-10T09:19:31.278+05:30  INFO 21588 --- [Module4] [main] c.M.Module4.Module4ApplicationTests      : Starting Module4ApplicationTests using Java 22.0.2 with PID 21588 (started by LENOVO in C:\Users\LENOVO\OneDrive\Documents\SpringBoot\Modul 4\Module4)
+2026-01-10T09:19:31.279+05:30  INFO 21588 --- [Module4] [main] c.M.Module4.Module4ApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2026-01-10T09:19:31.907+05:30  INFO 21588 --- [Module4] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T09:19:31.948+05:30  INFO 21588 --- [Module4] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 1 JPA repository interface.
+2026-01-10T09:19:32.399+05:30  INFO 21588 --- [Module4] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-10T09:19:32.454+05:30  INFO 21588 --- [Module4] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-10T09:19:32.761+05:30  INFO 21588 --- [Module4] [main] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2026-01-10T09:19:32.936+05:30  INFO 21588 --- [Module4] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T09:19:32.962+05:30  INFO 21588 --- [Module4] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-10T09:19:33.157+05:30  INFO 21588 --- [Module4] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3c82bac3
+2026-01-10T09:19:33.160+05:30  INFO 21588 --- [Module4] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-10T09:19:33.236+05:30  INFO 21588 --- [Module4] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/Module4?useSSL=false]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.1
+	Default catalog/schema: Module4/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-10T09:19:33.463+05:30  INFO 21588 --- [Module4] [main] o.h.e.c.i.m.AuditMetadataGenerator       : Adding properties for entity: com.Module4.Module4.entities.PostEntity
+2026-01-10T09:19:34.101+05:30  INFO 21588 --- [Module4] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-10T09:19:34.169+05:30  INFO 21588 --- [Module4] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T09:19:34.389+05:30  INFO 21588 --- [Module4] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-10T09:19:34.552+05:30  WARN 21588 --- [Module4] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T09:19:34.930+05:30  INFO 21588 --- [Module4] [main] c.M.Module4.Module4ApplicationTests      : Started Module4ApplicationTests in 3.988 seconds (process running for 4.95)
+2026-01-10T09:19:35.262+05:30 TRACE 21588 --- [Module4] [main] c.M.M.clients.impl.EmployeeClientImpl    : trying to create an employee with information : EmployeeDto(id=null, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true)
+2026-01-10T09:19:35.420+05:30 TRACE 21588 --- [Module4] [main] c.M.M.clients.impl.EmployeeClientImpl    : Succefully create a new employee : ApiResponse(timestamp=2026-01-10T09:19:35.358634800, data=EmployeeDto(id=755, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), error=null)
+2026-01-10T09:19:35.434+05:30 TRACE 21588 --- [Module4] [main] c.M.M.clients.impl.EmployeeClientImpl    : trying to get all employees in getEmployeeById with id : 1
+2026-01-10T09:19:35.445+05:30 TRACE 21588 --- [Module4] [main] c.M.M.clients.impl.EmployeeClientImpl    : trying to get all employees in getAllEmployees
+2026-01-10T09:19:35.445+05:30  INFO 21588 --- [Module4] [main] c.M.M.clients.impl.EmployeeClientImpl    : trying to get the employee in getEmployeeById 
+2026-01-10T09:19:35.458+05:30  INFO 21588 --- [Module4] [main] c.M.M.clients.impl.EmployeeClientImpl    : succesfully retrived the employee in getAllEmployee
+2026-01-10T09:19:35.458+05:30 TRACE 21588 --- [Module4] [main] c.M.M.clients.impl.EmployeeClientImpl    : Retrive employees List in getAllEmployee : [EmployeeDto(id=1, name=Anand, email=Shivam@gmail.com, age=99, role=null, salary=null, dateOfJoining=2022-01-01, isActive=null), EmployeeDto(id=2, name=Avanish, email=avanish@gmail.com, age=23, role=null, salary=null, dateOfJoining=2025-01-01, isActive=null), EmployeeDto(id=152, name=jai, email=jai@gmail.com, age=20, role=null, salary=null, dateOfJoining=2025-01-01, isActive=null), EmployeeDto(id=153, name=jai, email=jai@gmail.com, age=20, role=null, salary=null, dateOfJoining=2025-01-01, isActive=null), EmployeeDto(id=154, name=jai, email=jai@gmail.com, age=20, role=null, salary=null, dateOfJoining=2025-01-01, isActive=null), EmployeeDto(id=202, name=jai, email=jai@gmail.com, age=20, role=null, salary=null, dateOfJoining=2025-01-01, isActive=true), EmployeeDto(id=252, name=jai, email=jai@gmail.com, age=20, role=null, salary=null, dateOfJoining=2025-01-01, isActive=true), EmployeeDto(id=302, name=dev, email=jai@gmail.com, age=20, role=null, salary=null, dateOfJoining=2025-01-01, isActive=true), EmployeeDto(id=352, name=jaish, email=jai@gmail.com, age=20, role=ADMIN, salary=null, dateOfJoining=2025-01-01, isActive=true), EmployeeDto(id=402, name=jaish, email=jai@gmail.com, age=20, role=ADMIN, salary=2000.0, dateOfJoining=2025-01-01, isActive=true), EmployeeDto(id=403, name=jaish, email=jai@gmail.com, age=20, role=ADMIN, salary=2000.0, dateOfJoining=2025-01-01, isActive=true), EmployeeDto(id=452, name=jaish, email=jai@gmail.com, age=20, role=ADMIN, salary=20000.0, dateOfJoining=2025-01-01, isActive=true), EmployeeDto(id=502, name=jaish, email=jai@gmail.com, age=20, role=ADMIN, salary=20000.0, dateOfJoining=2025-01-01, isActive=true), EmployeeDto(id=552, name=shivam, email=jai@gmail.com, age=20, role=ADMIN, salary=20000.0, dateOfJoining=2024-01-01, isActive=true), EmployeeDto(id=602, name=jaish, email=jai@gmail.com, age=20, role=ADMIN, salary=20000.0, dateOfJoining=2025-01-01, isActive=true), EmployeeDto(id=652, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), EmployeeDto(id=702, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), EmployeeDto(id=703, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), EmployeeDto(id=704, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), EmployeeDto(id=705, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), EmployeeDto(id=706, name=Avanish, email=avanish@gmail.com, age=2, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), EmployeeDto(id=752, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), EmployeeDto(id=753, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), EmployeeDto(id=754, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true), EmployeeDto(id=755, name=Avanish, email=avanish@gmail.com, age=20, role=USER, salary=5000.0, dateOfJoining=2020-12-01, isActive=true)]
+2026-01-10T09:19:35.467+05:30  INFO 21588 --- [Module4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T09:19:35.468+05:30  INFO 21588 --- [Module4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-10T09:19:35.470+05:30  INFO 21588 --- [Module4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-10T09:53:16.090+05:30  INFO 23268 --- [Module4] [restartedMain] com.Module4.Module4.Module4Application   : Starting Module4Application using Java 22.0.2 with PID 23268 (C:\Users\LENOVO\OneDrive\Documents\SpringBoot\Modul 4\Module4\target\classes started by LENOVO in C:\Users\LENOVO\OneDrive\Documents\SpringBoot\Modul 4\Module4)
+2026-01-10T09:53:16.097+05:30  INFO 23268 --- [Module4] [restartedMain] com.Module4.Module4.Module4Application   : No active profile set, falling back to 1 default profile: "default"
+2026-01-10T09:53:16.156+05:30  INFO 23268 --- [Module4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-01-10T09:53:16.156+05:30  INFO 23268 --- [Module4] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-01-10T09:53:16.827+05:30  INFO 23268 --- [Module4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-10T09:53:16.874+05:30  INFO 23268 --- [Module4] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 1 JPA repository interface.
+2026-01-10T09:53:17.465+05:30  INFO 23268 --- [Module4] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 9000 (http)
+2026-01-10T09:53:17.479+05:30  INFO 23268 --- [Module4] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-10T09:53:17.480+05:30  INFO 23268 --- [Module4] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-01-10T09:53:17.512+05:30  INFO 23268 --- [Module4] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1355 ms
+2026-01-10T09:53:17.677+05:30  INFO 23268 --- [Module4] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-01-10T09:53:17.726+05:30  INFO 23268 --- [Module4] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.0.Final
+2026-01-10T09:53:18.000+05:30  INFO 23268 --- [Module4] [restartedMain] o.h.e.boot.internal.EnversServiceImpl    : Envers integration enabled? : true
+2026-01-10T09:53:18.170+05:30  INFO 23268 --- [Module4] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-10T09:53:18.190+05:30  INFO 23268 --- [Module4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-10T09:53:18.327+05:30  INFO 23268 --- [Module4] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@468eee73
+2026-01-10T09:53:18.328+05:30  INFO 23268 --- [Module4] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-10T09:53:18.388+05:30  INFO 23268 --- [Module4] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/Module4?useSSL=false]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.1
+	Default catalog/schema: Module4/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-10T09:53:18.559+05:30  INFO 23268 --- [Module4] [restartedMain] o.h.e.c.i.m.AuditMetadataGenerator       : Adding properties for entity: com.Module4.Module4.entities.PostEntity
+2026-01-10T09:53:19.093+05:30  INFO 23268 --- [Module4] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-10T09:53:19.149+05:30  INFO 23268 --- [Module4] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T09:53:19.369+05:30  INFO 23268 --- [Module4] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-10T09:53:19.498+05:30  WARN 23268 --- [Module4] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-10T09:53:19.803+05:30  INFO 23268 --- [Module4] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 9000 (http) with context path '/'
+2026-01-10T09:53:19.810+05:30  INFO 23268 --- [Module4] [restartedMain] com.Module4.Module4.Module4Application   : Started Module4Application in 4.153 seconds (process running for 4.536)
+2026-01-10T09:53:38.551+05:30  INFO 23268 --- [Module4] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-10T09:53:38.556+05:30  INFO 23268 --- [Module4] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-01-10T09:53:38.559+05:30  INFO 23268 --- [Module4] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-10T09:53:38.562+05:30  INFO 23268 --- [Module4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-10T09:53:38.564+05:30  INFO 23268 --- [Module4] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
