@@ -1,5 +1,6 @@
 package com.example.SecurityApp;
 
+import com.example.SecurityApp.Filters.LoggingFilter;
 import com.example.SecurityApp.entities.User;
 import com.example.SecurityApp.services.JwtService;
 import org.junit.jupiter.api.Test;
@@ -12,7 +13,6 @@ class SecurityAppApplicationTests {
     private JwtService jwtService;
 	@Test
 	void contextLoads() {
-
         User user = new User(4L , "avanish@gmail.com" , "1234" , "Avanish");
 
         String token = jwtService.generateToken(user);
@@ -21,6 +21,11 @@ class SecurityAppApplicationTests {
         Long id = jwtService.getUserIdFromToken(token);
         System.out.println(id);
 	}
+
+    @Test
+    void LoggingFilter() {
+        LoggingFilter loggingFilter = new LoggingFilter();
+    }
 
 
 }
