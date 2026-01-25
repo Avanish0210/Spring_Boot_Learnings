@@ -3,6 +3,8 @@ package com.example.SecurityApp.controller;
 import com.example.SecurityApp.dto.LoginDto;
 import com.example.SecurityApp.dto.SignUpDto;
 import com.example.SecurityApp.dto.UserDto;
+import com.example.SecurityApp.entities.SessionEntity;
+import com.example.SecurityApp.repositories.SessionRepository;
 import com.example.SecurityApp.services.AuthService;
 import com.example.SecurityApp.services.UserService;
 import jakarta.servlet.http.Cookie;
@@ -22,6 +24,7 @@ public class AuthController {
 
     private final UserService userService;
     private final AuthService authService;
+    private final SessionRepository sessionRepository;
     //signup api
     @PostMapping("/signup")
     public ResponseEntity<UserDto> signup(@RequestBody SignUpDto signUpDto) {
@@ -34,6 +37,16 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto , HttpServletRequest request , HttpServletResponse response) {
         String token = authService.login(loginDto);
+
+        String username = loginDto.getEmail();
+
+        sessionRepository.deleteByUserId(username);
+        SessionEntity sessions = new SessionEntity();
+        sessions.setToken(token);
+        sessions.setUserId(username);
+        sessionRepository.save(sessions);
+
+
 
         Cookie cookie = new Cookie("token", token);
         cookie.setHttpOnly(true);//it can not be accessed by only http by this
