@@ -39,8 +39,8 @@ public class WebSecurityConfig {
                 .csrf(csrfConfig -> csrfConfig.disable())
                 .sessionManagement(sessionConfig -> sessionConfig
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(sessionValidationFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(loggingFilter, UsernamePasswordAuthenticationFilter.class)
+                //.addFilterBefore(sessionValidationFilter, UsernamePasswordAuthenticationFilter.class)
+                //.addFilterBefore(loggingFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthFilter , UsernamePasswordAuthenticationFilter.class);
                 //.formLogin(Customizer.withDefaults());
 

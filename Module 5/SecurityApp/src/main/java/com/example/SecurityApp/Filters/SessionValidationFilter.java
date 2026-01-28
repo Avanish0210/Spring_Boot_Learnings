@@ -19,28 +19,40 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SessionValidationFilter extends OncePerRequestFilter {
 
+    @Autowired
     private SessionRepository sessionRepository;
+    @Autowired
     private JwtService jwtService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        final String requestTokenHeader = request.getHeader("Authorization");
-        if(requestTokenHeader==null || !requestTokenHeader.startsWith("Bearer ")){
-            String token = requestTokenHeader.split("Bearer ")[1];
-            String userId = jwtService.getUserIdFromToken(token).toString();
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
 
-            Optional<SessionEntity> sessionEntity = sessionRepository.findByUserId(userId);
-            if(sessionEntity.isPresent() && sessionEntity.get().getToken().equals(token)) {
-                filterChain.doFilter(request,response);
-                return;
-
-            }
-            // Invalid/expired session
-            response.setStatus(401);
-            response.getWriter().write("Invalid session");
+        // Skip session validation for public endpoints
+        String requestPath = request.getRequestURI();
+        if (requestPath.startsWith("/auth/") || requestPath.equals("/error") || requestPath.equals("/posts")) {
+            filterChain.doFilter(request, response);
+            return;
         }
 
+        final String requestTokenHeader = request.getHeader("Authorization");
+        if (requestTokenHeader == null || !requestTokenHeader.startsWith("Bearer ")) {
+            // No token or invalid format, continue to next filter
+            filterChain.doFilter(request, response);
+            return;
+        }
 
+        String token = requestTokenHeader.split("Bearer ")[1];
+        String userId = jwtService.getUserIdFromToken(token).toString();
 
+        Optional<SessionEntity> sessionEntity = sessionRepository.findByUserId(userId);
+        if (sessionEntity.isPresent() && sessionEntity.get().getToken().equals(token)) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        // Invalid/expired session
+        response.setStatus(401);
+        response.getWriter().write("Invalid session");
     }
 }
