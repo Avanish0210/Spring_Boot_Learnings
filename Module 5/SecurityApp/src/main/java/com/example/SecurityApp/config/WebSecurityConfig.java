@@ -3,6 +3,7 @@ package com.example.SecurityApp.config;
 import com.example.SecurityApp.Filters.JwtAuthFilter;
 import com.example.SecurityApp.Filters.LoggingFilter;
 import com.example.SecurityApp.Filters.SessionValidationFilter;
+import com.example.SecurityApp.handlers.OAuth2SuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,12 +29,13 @@ public class WebSecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final LoggingFilter loggingFilter;
     private final SessionValidationFilter sessionValidationFilter;
+    private final OAuth2SuccessHandler oAuth2SuccessHandler;
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/posts","/error","/auth/**").permitAll()
+                        .requestMatchers("/posts","/error","/auth/**" , "/home.html").permitAll()
                         //.requestMatchers("/posts/**").authenticated()
                         .anyRequest().authenticated())
                 .csrf(csrfConfig -> csrfConfig.disable())
@@ -41,7 +43,11 @@ public class WebSecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 //.addFilterBefore(sessionValidationFilter, UsernamePasswordAuthenticationFilter.class)
                 //.addFilterBefore(loggingFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(jwtAuthFilter , UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAuthFilter , UsernamePasswordAuthenticationFilter.class)
+                .oauth2Login(oauth2Config -> oauth2Config
+                        .failureUrl("/login?error=true")
+                                .successHandler(oAuth2SuccessHandler)
+                );
                 //.formLogin(Customizer.withDefaults());
 
         return httpSecurity.build();
