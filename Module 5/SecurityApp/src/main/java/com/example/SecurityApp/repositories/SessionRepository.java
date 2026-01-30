@@ -1,15 +1,19 @@
 package com.example.SecurityApp.repositories;
 
-import com.example.SecurityApp.entities.SessionEntity;
+import com.example.SecurityApp.entities.Session;
+import com.example.SecurityApp.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+
+import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface SessionRepository extends JpaRepository<SessionEntity, Integer> {
+public interface SessionRepository extends JpaRepository<Session, Long> {
 
-    Optional<SessionEntity> findByUserId(String userId);
-    Optional<SessionEntity> findByUserIdAndToken(String userId, String token);
-    void deleteByUserId(String userId);
+
+    List<Session> findByUser(User user);
+
+    Optional<Session> findByRefreshToken(String refreshToken);
 }

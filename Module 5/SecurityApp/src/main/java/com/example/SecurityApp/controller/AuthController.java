@@ -1,12 +1,10 @@
 package com.example.SecurityApp.controller;
 
-import com.example.SecurityApp.dto.LoginDto;
-import com.example.SecurityApp.dto.LoginResponseDto;
-import com.example.SecurityApp.dto.SignUpDto;
-import com.example.SecurityApp.dto.UserDto;
-import com.example.SecurityApp.entities.SessionEntity;
+import com.example.SecurityApp.dto.*;
+import com.example.SecurityApp.entities.Session;
 import com.example.SecurityApp.repositories.SessionRepository;
 import com.example.SecurityApp.services.AuthService;
+import com.example.SecurityApp.services.SessionService;
 import com.example.SecurityApp.services.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,10 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationServiceException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 
@@ -29,7 +24,7 @@ public class AuthController {
 
     private final UserService userService;
     private final AuthService authService;
-    private final SessionRepository sessionRepository;
+    private final SessionService sessionService;
 
     @Value("${deploy.env}")
     private String deployEnv;
@@ -48,19 +43,27 @@ public class AuthController {
 
         String username = loginDto.getEmail();
 
-        sessionRepository.deleteByUserId(username);
-        SessionEntity sessions = new SessionEntity();
-        sessions.setToken(loginResponseDto.getAccessToken());
-        sessions.setUserId(username);
-        sessionRepository.save(sessions);
-
-
-
         Cookie cookie = new Cookie("refreshToken", loginResponseDto.getRefreshToken());
         cookie.setHttpOnly(true);//it can not be accessed by only http by this
         cookie.setSecure("production".equals(deployEnv));
         response.addCookie(cookie);
         return ResponseEntity.ok(loginResponseDto);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpServletRequest request, HttpServletResponse response) {
+        String refreshToken =  Arrays.stream(request.getCookies()).
+                filter(cookie -> "refreshToken".equals(cookie.getName()))
+                .findFirst()
+                .map(Cookie::getValue)
+                .orElseThrow(() -> new AuthenticationServiceException("Invalid refreshToken"));
+
+        authService.logout(refreshToken);
+        Cookie cookie = new Cookie("refreshToken", null);
+        cookie.setHttpOnly(true);
+        response.addCookie(cookie);
+
+        return ResponseEntity.ok("success");
     }
 
     @PostMapping("/refresh")

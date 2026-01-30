@@ -2,6 +2,7 @@ package com.example.SecurityApp.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -10,15 +11,15 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SessionEntity {
+@Builder
+public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true, nullable = false)
-    private String userId;
-    @Column(nullable = false)
-    private String token;
-    @Column(unique = true , nullable = false )
-    private LocalDateTime createdAt = LocalDateTime.now();
+    private String refreshToken;
+    @CreationTimestamp
+    private LocalDateTime LastUsedAt;
+    @ManyToOne
+    private User user;
 
 }
