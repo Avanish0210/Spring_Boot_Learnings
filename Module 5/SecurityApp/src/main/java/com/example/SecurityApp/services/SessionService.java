@@ -15,11 +15,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SessionService {
     private final SessionRepository sessionRepository;
-    private final int SESSION_LIMIT = 2;
+    //
 
     public void generateNewSession(User user , String refreshToken) {
         List<Session> userSession = sessionRepository.findByUser(user);
-        if(userSession.size() == SESSION_LIMIT) {
+        if(user.getSessionLimitCount()==null){
+            user.setSessionLimitCount(2);
+        }
+        if(userSession.size() >= user.getSessionLimitCount()) {
             userSession.sort(Comparator.comparing(Session::getLastUsedAt));
 
             Session leastRecentlyUsedSession = userSession.getFirst();

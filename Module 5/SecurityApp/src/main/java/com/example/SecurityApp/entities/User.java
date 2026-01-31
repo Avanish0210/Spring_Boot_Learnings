@@ -2,6 +2,7 @@ package com.example.SecurityApp.entities;
 
 import com.example.SecurityApp.entities.enums.Permission;
 import com.example.SecurityApp.entities.enums.Role;
+import com.example.SecurityApp.entities.enums.Subscription;
 import com.example.SecurityApp.utills.PermissionMapping;
 import jakarta.persistence.*;
 import lombok.*;
@@ -34,6 +35,9 @@ public class User implements UserDetails {
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+    @Enumerated(EnumType.STRING)
+    private Subscription subscription;
+    private Integer sessionLimitCount;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

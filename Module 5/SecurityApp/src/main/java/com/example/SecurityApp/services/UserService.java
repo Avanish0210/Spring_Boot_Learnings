@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.example.SecurityApp.entities.enums.Subscription.*;
+
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserDetailsService {
@@ -47,6 +49,18 @@ public class UserService implements UserDetailsService {
             throw new BadCredentialsException("User already exists");
         }
         User toBeCreatedUser = modelMapper.map(signUpDto, User.class);
+        if(toBeCreatedUser.getSubscription()==FREE){
+            toBeCreatedUser.setSubscription(FREE);
+            toBeCreatedUser.setSessionLimitCount(1);
+        }
+        if(toBeCreatedUser.getSubscription()==BASIC){
+            toBeCreatedUser.setSubscription(BASIC);
+            toBeCreatedUser.setSessionLimitCount(2);
+        }
+        if(toBeCreatedUser.getSubscription()==PREMIUM){
+            toBeCreatedUser.setSubscription(PREMIUM);
+            toBeCreatedUser.setSessionLimitCount(4);
+        }
         toBeCreatedUser.setPassword(passwordEncoder.encode(toBeCreatedUser.getPassword()));
         User saveUser = userRepository.save(toBeCreatedUser);
         return modelMapper.map(saveUser, UserDto.class);
