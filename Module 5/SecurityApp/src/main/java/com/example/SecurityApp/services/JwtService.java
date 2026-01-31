@@ -29,10 +29,9 @@ public class JwtService {
         return Jwts.builder()
                 .subject(user.getId().toString()) // from user we get the id
                 .claim("email" , user.getEmail()) //claims are key value pair you can pass claim as many
-                .claim("roles" , Set.of("Admin" , "USER"))
+                .claim("roles" , user.getRoles().toString())
                 .issuedAt(new Date())  // we define the date we created so that we can have its expiry
-                .expiration(new Date(System.currentTimeMillis() + 1000*60*10))   //way to write expiry
-                //after that we have to create a secret key in application properties and then implement here above and then make it as a secret key above i did
+                .expiration(new Date(System.currentTimeMillis() + 1000*60*10))
                 .signWith(getSecretKey())  //then we do sign in
                 .compact(); //then we return it as a compact
     }
@@ -41,7 +40,6 @@ public class JwtService {
                 .subject(user.getId().toString()) // from user we get the id
                 .issuedAt(new Date())  // we define the date we created so that we can have its expiry
                 .expiration(new Date(System.currentTimeMillis() + 1000L *60*60*24*30*6))   //way to write expiry
-                //after that we have to create a secret key in application properties and then implement here above and then make it as a secret key above i did
                 .signWith(getSecretKey())  //then we do sign in
                 .compact(); //then we return it as a compact
     }

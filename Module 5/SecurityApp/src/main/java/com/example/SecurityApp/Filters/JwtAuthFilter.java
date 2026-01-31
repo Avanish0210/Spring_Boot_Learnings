@@ -47,7 +47,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
                 //create an usernamepasswordauthentication
                 UsernamePasswordAuthenticationToken authenticationToken =
-                        new UsernamePasswordAuthenticationToken(user, null, null);
+                        new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                 authenticationToken.setDetails(
                         //this will contain some device information like ip address session id related stuff
                         new WebAuthenticationDetailsSource().buildDetails(request)
