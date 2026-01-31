@@ -21,5 +21,8 @@ public class PostEntity{
     private String title;
     private String description;
 
+    @ManyToOne
+    private User author;
+
 
 }
