@@ -28,4 +28,5 @@ public class EmployeeDto {
     public int hashCode() {
         return Objects.hash(getId(), getEmail(), getName(), getSalary());
     }
+
 }
