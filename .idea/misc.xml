@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="KubernetesApiProvider">{}</component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Module 1/Homework  Week 1/CakeBaker/CakeBaker/pom.xml" />
+        <option value="$PROJECT_DIR$/Module 1/learningRESTAPIs (1)/learningRESTAPIs/pom.xml" />
+        <option value="$PROJECT_DIR$/Module 1/learningRESTAPIs (1)/spring-petclinic/pom.xml" />
+        <option value="$PROJECT_DIR$/Module 2/week2module2.2/week2module2.2/pom.xml" />
+        <option value="$PROJECT_DIR$/Module 2/RESTApiEndpoints/RESTApiEndpoints/pom.xml" />
+        <option value="$PROJECT_DIR$/Module 3/JPAtuts/pom.xml" />
+        <option value="$PROJECT_DIR$/Module 3/hospitalManagementSystem/pom.xml" />
+        <option value="$PROJECT_DIR$/Module 4/Module4/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="22" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="CakeBaker" />
+        <module name="spring-petclinic" />
+        <module name="week2module2.2" />
+      </profile>
+      <profile name="Annotation profile for JPAtutorial" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="JPAtuts" />
+        <module name="RESTApiEndpoints" />
+        <module name="learningRESTAPIs" />
+      </profile>
+      <profile name="Annotation profile for hospitalManagementSystem" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="hospitalManagementSystem" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="CakeBaker" options="-parameters" />
+      <module name="JPAtuts" options="-parameters" />
+      <module name="RESTApiEndpoints" options="-parameters" />
+      <module name="hospitalManagementSystem" options="-parameters" />
+      <module name="learningRESTAPIs" options="-parameters" />
+      <module name="spring-petclinic" options="-parameters" />
+      <module name="spring-petclinic.aot" options="-parameters" />
+      <module name="spring-petclinic.aotTest" options="-parameters" />
+      <module name="spring-petclinic.main" options="-parameters" />
+      <module name="spring-petclinic.test" options="-parameters" />
+      <module name="week2module2.2" options="-parameters" />
+    </option>
+  </component>
+</project>
