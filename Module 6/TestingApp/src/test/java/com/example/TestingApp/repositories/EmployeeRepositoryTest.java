@@ -15,9 +15,9 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-@Import(TestContainerConfiguration.class)
+//@Import(TestContainerConfiguration.class)
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.ANY)
 class EmployeeRepositoryTest {
     @Autowired
     private EmployeeRepository employeeRepository;
