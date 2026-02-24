@@ -7,6 +7,19 @@ spring:
       chat:
         options:
           model: gemma3:1b
+      embedding:
+        options:
+          model: nomic-embed-text:latest
+    vectorstore:
+      pgvector:
+        initialize-schema: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/my-test-vector-db
+    username: my-user
+    password: postgres-sql
+    driver-class-name: org.postgresql.Driver
+
 
 
 logging:

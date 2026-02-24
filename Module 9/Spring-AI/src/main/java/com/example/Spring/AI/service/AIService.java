@@ -1,18 +1,40 @@
 package com.example.Spring.AI.service;
 
 import com.example.Spring.AI.dto.Joke;
+import io.netty.channel.embedded.EmbeddedChannel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.prompt.PromptTemplate;
+import org.springframework.ai.document.Document;
+import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class AIService {
     private final ChatClient chatClient;
+    public final EmbeddingModel embeddingModel;
+    private final VectorStore vectorStore;
+
+    public float[] getEmbedding(String text){
+        return embeddingModel.embed(text);
+    }
+
+    // to store data you have to create in a document
+    public void ingestDataToVectorStore(String text){
+        Document document = new Document(text);
+        vectorStore.add(List.of(document));
+    }
+
+    public List<Document> similaritySearch(String text){
+        return vectorStore.similaritySearch(text);
+    }
+
     public String getJoke(String topic){
 
         String systemPrompt = """
