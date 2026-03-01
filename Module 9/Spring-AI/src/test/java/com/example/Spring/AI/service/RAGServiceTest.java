@@ -20,6 +20,11 @@ public class RAGServiceTest {
         String res = ragService.askAI("Cant view the live class, what to do?");
         System.out.println(res);
     }
+    @Test
+    public void testAskAIWithAdvisor() {
+        String res = ragService.askAIWithAdvisor("what are your view on mobile gaming" , "avanish0210");
+        System.out.println(res);
+    }
 
 
 }
