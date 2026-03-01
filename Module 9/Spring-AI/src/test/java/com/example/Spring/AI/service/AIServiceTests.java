@@ -27,7 +27,7 @@ public class AIServiceTests {
 
     @Test
     public void testStoreData(){
-        aiService.ingestDataToVectorStore("This is a big text here");
+        aiService.ingestDataToVectorStore();
     }
 
     @Test
