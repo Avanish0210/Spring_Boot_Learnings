@@ -22,12 +22,11 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository employeeRepository;
-    private final SalaryAccountService salaryAccountService;
     private final ModelMapper modelMapper;
     private final String CACHE_NAME = "employees";
 
     @Override
-    @Cacheable(cacheNames = CACHE_NAME, key = "#id")
+    @Cacheable(cacheNames = CACHE_NAME , key = "#id")
     public EmployeeDto getEmployeeById(Long id) {
         log.info("Fetching employee with id: {}", id);
         Employee employee = employeeRepository.findById(id)
@@ -40,8 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @CachePut(cacheNames = CACHE_NAME, key = "#result.id")
-    @Transactional
+    @CachePut(cacheNames = CACHE_NAME , key = "#result.id")
     public EmployeeDto createNewEmployee(EmployeeDto employeeDto) {
         log.info("Creating new employee with email: {}", employeeDto.getEmail());
         List<Employee> existingEmployees = employeeRepository.findByEmail(employeeDto.getEmail());
@@ -53,14 +51,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee newEmployee = modelMapper.map(employeeDto, Employee.class);
         Employee savedEmployee = employeeRepository.save(newEmployee);
 
-        salaryAccountService.createAccount(savedEmployee);
-
         log.info("Successfully created new employee with id: {}", savedEmployee.getId());
         return modelMapper.map(savedEmployee, EmployeeDto.class);
     }
 
     @Override
-    @CachePut(cacheNames = CACHE_NAME, key = "#id")
+    @CachePut(cacheNames = CACHE_NAME , key = "#id")
     public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto) {
         log.info("Updating employee with id: {}", id);
         Employee employee = employeeRepository.findById(id)
@@ -83,7 +79,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    @CacheEvict(cacheNames = CACHE_NAME, key = "#id")
+    @CacheEvict(cacheNames = CACHE_NAME , key = "#id")
     public void deleteEmployee(Long id) {
         log.info("Deleting employee with id: {}", id);
         boolean exists = employeeRepository.existsById(id);
