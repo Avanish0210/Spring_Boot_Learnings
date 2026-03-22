@@ -1,7 +1,9 @@
 package com.example.ChachingApp.controllers;
 
 import com.example.ChachingApp.dto.EmployeeDto ;
+import com.example.ChachingApp.entities.SalaryAccount;
 import com.example.ChachingApp.services.EmployeeService ;
+import com.example.ChachingApp.services.SalaryAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    private final SalaryAccountService salaryAccountService;
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeDto> getEmployeeById(@PathVariable Long id) {
         EmployeeDto employeeDto = employeeService.getEmployeeById(id);
@@ -36,6 +39,12 @@ public class EmployeeController {
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/incrementBalance/{accountId}")
+    public ResponseEntity<SalaryAccount> incrementBalance(@PathVariable Long accountId) {
+        SalaryAccount salaryAccount = salaryAccountService.incrementBalance(accountId);
+        return ResponseEntity.ok(salaryAccount);
     }
 
 }
