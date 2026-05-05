@@ -1,3 +1,6 @@
+
+kafka.topic.user-random-topic: user-random-topic
+
 spring:
-  application:
-    name: user-service
+  kafka:
+    bootstrap-servers: localhost:9092
