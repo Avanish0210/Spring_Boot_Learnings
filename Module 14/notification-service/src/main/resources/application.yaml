@@ -4,9 +4,15 @@ spring:
     consumer:
       group-id: ${spring.application.name}
       key-serializer: org.apache.kafka.common.serialization.LongSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
       properties:
         spring.json:
-          trusted.packages: com.learnKafka.*
+          trusted.packages: com.codingshuttle.learnKafka.*
+        schema:
+          registry:
+            url: "http://127.0.0.1:8081"
+        specific:
+          avro:
+            reader: "true"
 
 
