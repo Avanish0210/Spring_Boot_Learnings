@@ -1,0 +1,35 @@
+package com.example.learnMultithread;
+
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.TaskScheduler;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+
+import java.util.concurrent.Executor;
+
+
+@Configuration
+public class ThreadConfig {
+
+    @Bean
+    public TaskScheduler taskScheduler() {
+        ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
+        taskScheduler.setPoolSize(4);
+        taskScheduler.setThreadNamePrefix("CustomTask-");
+        taskScheduler.initialize();
+        return taskScheduler;
+    }
+
+    @Bean
+    public Executor jobExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(4);
+        executor.setMaxPoolSize(10);
+        executor.setQueueCapacity(6);
+        executor.setThreadNamePrefix("AvanishExec-");
+        executor.initialize();
+        return executor;
+    }
+}
